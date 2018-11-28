@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000 !important;
+}
+.row{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+form{
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* ------------------- INICIO HEADER ------------------- */
+
+.Header{
+  padding: 30px 0;
+  text-align: center;
+  color : #fff;
+}
+
+.textHeader{
+  padding-top: 13px;
+}
+
+/* ------------------- INICIO HEADER ------------------- */
+/* ------------------- INICIO BODY ------------------- */
+
+.Body{
+  float: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+/* ------------------- INICIO BODY ------------------- */
+/* ------------------- INICIO DADOS USUARIO ------------------- */
+
+.DadosUsuario{
+  font-size: 20px;
+}
+.DadosUsuario .DivDados{
+  padding: 0;
+  padding-left: 15px;
+  padding-top: 17px;
+}
+
+/* ------------------- INICIO DADOS USUARIO ------------------- */
+/* ------------------- INICIO COMPRAR TOKEN ------------------- */
+
+.ComprarToken .header, .TransferirToken .header{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.ComprarToken .input, .TransferirToken .input{
+  width: 100%;
+}
+
+/* ------------------- INICIO COMPRAR TOKEN ------------------- */
