@@ -13,9 +13,6 @@ export default class ComprarToken extends Component {
         this.state = {
             loading: true,
             chave: '',
-            loadingForm: false,
-            existsResult: '',
-            result: '',
             inputQuantidade : '',
         }
     }
@@ -26,54 +23,26 @@ export default class ComprarToken extends Component {
 
     loadInfo = async () => {
         // CARREGA CARTEIRA DO USUÁRIO
-        /*
-        web3.eth.getCoinbase((e, account) => {
+        await web3.eth.getCoinbase((e, account) => {
             if (account !== null) {
                 this.setState({ chave: account });
             }
         });
-        */
 
-
-        this.setState({ loading: false });
+        await this.setState({ loading: false });
     }
 
     submit = async(e) => {
-        e.preventDefault();
-
-        await this.setState({ loadingForm : true });
-        /*
-        ContratoToken.methods.buy(this.state.inputQuantidade).send({ from : this.state.chave })
-        .then(
-            (result) => {
-                this.retornaResultadoOperacao(true, true);
-            }
-        )
-        .catch(
-            (error) => {
-                this.retornaResultadoOperacao(false, false);
-            }
-        );
-        */
+        e.preventDefault();        
+        ContratoToken.methods.buy(this.state.inputQuantidade).send({ from : this.state.chave });
     }
 
     changeInput = (e) => {
         this.setState({ [e.target.name] : e.target.value });
     }
 
-    retornaResultadoOperacao(result, recarrega) {
-        this.setState({ existsResult: true, result: result });
-
-        setTimeout(() => {
-            this.setState({ existsResult: false, result: '', loadingForm: false });
-            if (recarrega) {
-                window.location.reload();
-            }
-        }, 2500);
-    }
-
     render() {
-        var { loading, loadingForm, existsResult, result } = this.state;
+        var { loading } = this.state;
 
         //console.log(this.state);
 
@@ -108,16 +77,6 @@ export default class ComprarToken extends Component {
                                                 placeholder="Digite a quantidade de Token que gostaria de adquirir"
                                             />
                                         </Row>
-                                    </Row>
-                                    <Row style={{ marginBottom: 10 }}>
-                                        <LoadingScreen
-                                            loading={loadingForm}
-                                            text={"Efetuando compra, por favor não feche o navegador e aguarde a execução"}
-                                            existsResult={existsResult}
-                                            result={result}
-                                            success={"Compra efetuada com sucesso!"}
-                                            error={"Erro ao comprar!"}
-                                        />
                                     </Row>
                                     <Row>
                                         <Button primary>Adquirir</Button>

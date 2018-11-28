@@ -23,16 +23,22 @@ export default class DadosUsuario extends Component {
 
     loadInfo = async () => {
         // CARREGA CARTEIRA DO USUÁRIO
-        /*
-        web3.eth.getCoinbase((e, account) => {
+        await web3.eth.getCoinbase((e, account) => {
             if (account !== null) {
                 this.setState({ chave: account });
             }
         });
-        */
 
+        // CARREGA SALDO DE TOKENS DO USUÁRIO ATUAL
+        await ContratoToken.methods.getBalance(this.state.chave)
+        .call()
+        .then(
+            (result) => {
+                this.setState({ saldo : result });
+            }
+        );
 
-        this.setState({ loading: false });
+        await this.setState({ loading: false });
     }
 
     render() {
